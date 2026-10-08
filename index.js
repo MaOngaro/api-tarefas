@@ -48,6 +48,18 @@ app.get('/tarefas/:id', (req, res) => {
     res.json(tarefa)
 })
 
+app.put('/tarefas/:id', (req, res) => {
+    const id = Number(req.params.id)
+    const tarefa = tarefas.find(x => x.id === id)
+    if (tarefa === undefined) {
+        res.status(404).json({ erro: "Tarefa não encontrada." })
+        return
+    }
+    tarefa.titulo = req.body.titulo
+    tarefa.concluida = req.body.concluida
+    res.json(tarefa)
+})
+
 app.listen(port, () => {
     console.log(`Servidor rodando em: ${port}`)
 })
