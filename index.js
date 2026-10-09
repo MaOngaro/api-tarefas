@@ -21,7 +21,11 @@ app.get('/tarefas', (req, res) => {
 let proximoId = 3
 
 app.post('/tarefas', (req, res) => {
-    const novaTarefa = { id: proximoId, titulo: req.body.titulo, concluida: false }
+    if (!req.body.titulo || req.body.titulo.trim() === ""){
+        res.status(400).json({ erro: "Adicione o título." })
+        return
+    }
+    const novaTarefa = { id: proximoId, titulo: req.body.titulo.trim(), concluida: false }
     proximoId++
     tarefas.push(novaTarefa)
     res.status(201).json(novaTarefa)
