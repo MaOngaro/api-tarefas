@@ -1,11 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarefas do Gateiro</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p>Lembrou das tarefas de hoje?</p>
+    <main class="papel">
+        <header>
+            <h1>Tarefas do Gateiro</h1>
+        </header>
+
+        <form>
+            <input type="text" placeholder="Escreva a nova tarefa." aria-label="Escreva a nova tarefa.">
+            <button type="submit">Adicionar</button>
+        </form>
+
+        <ul>
+            <li>
+                <input type="checkbox" checked="checked">
+                <span>Limpar caixa de areia.</span>
+                <button>Excluir</button>
+            </li>
+            <li>
+                <input type="checkbox">
+                <span>Checar a água.</span>
+                <button>Excluir</button>
+            </li>
+        </ul>
+    </main>
 </body>
 </html>

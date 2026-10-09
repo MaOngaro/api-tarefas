@@ -1,0 +1,55 @@
+:root {
+    --verde: #DDE3A3;
+    --cinza-claro: #EDF0E7;
+    --rosa-claro: #F8C7BE;
+    --rosa-medio: #D87E9A;
+    --roxo: #744982;
+    --preto: #000;
+}
+
+body {
+    background-color: var(--rosa-medio);
+    color: var(--preto);
+}
+
+.papel {
+    max-width: 500px;
+    margin: 80px auto;
+    padding: 40px 15px 20px 15px;
+    background-color: var(--cinza-claro);
+    border: 1px solid var(--preto);
+    border-radius: 8px;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-bottom: 20px;
+    list-style: none;
+}
+
+button .excluir {
+    margin-left: auto;
+}
+
+span {
+    border-bottom: 1px solid var(--roxo);
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    border: 1px solid var(--preto);
+    border-radius: 2px;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--verde);
+}
