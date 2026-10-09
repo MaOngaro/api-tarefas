@@ -59,7 +59,11 @@ app.put('/tarefas/:id', (req, res) => {
         res.status(404).json({ erro: "Tarefa não encontrada." })
         return
     }
-    tarefa.titulo = req.body.titulo
+    if (!req.body.titulo || req.body.titulo.trim() === ""){
+        res.status(400).json({ erro: "Adicione o título." })
+        return
+    }
+    tarefa.titulo = req.body.titulo.trim()
     tarefa.concluida = req.body.concluida
     res.json(tarefa)
 })
