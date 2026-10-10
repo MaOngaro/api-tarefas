@@ -4,9 +4,9 @@ function mostrarTarefas(tarefas) {
     ulLista.innerHTML = ""
     for(const t of tarefas) {
         const ulLi = document.createElement("li")
-        const ulImput = document.createElement("input")
-            ulImput.type = "checkbox"
-            ulImput.checked = t.concluida
+        const ulInput = document.createElement("input")
+            ulInput.type = "checkbox"
+            ulInput.checked = t.concluida
         const ulSpan = document.createElement("span")
             ulSpan.textContent = t.titulo
         const ulButton = document.createElement("button")
@@ -17,7 +17,7 @@ function mostrarTarefas(tarefas) {
             carregarTarefas()
         })
 
-        ulLi.append(ulImput, ulSpan, ulButton)
+        ulLi.append(ulInput, ulSpan, ulButton)
         ulLista.append(ulLi)
     }
 }
@@ -27,5 +27,14 @@ async function carregarTarefas() {
     const lista = await resposta.json()
     mostrarTarefas(lista)
 }
+
+const formHTML = document.getElementById("formulario")
+const inputHTML = document.getElementById("campo")
+
+formHTML.addEventListener("submit", (evento) => {
+    evento.preventDefault()
+    console.log(inputHTML.value)
+})
+
 
 carregarTarefas()
