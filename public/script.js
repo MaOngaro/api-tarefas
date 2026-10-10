@@ -30,14 +30,20 @@ async function carregarTarefas() {
 
 const formHTML = document.getElementById("formulario")
 const inputHTML = document.getElementById("campo")
+const avisoP = document.getElementById("aviso")
 
 formHTML.addEventListener("submit", async (evento) => {
     evento.preventDefault()
-    await fetch("/tarefas", {
+    const resultado = await fetch("/tarefas", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ titulo: inputHTML.value })
     })
+    if (!resultado.ok) {
+        avisoP.textContent = "Escreva um título para a tarefa."
+        return
+    }
+    avisoP.textContent = ""
     carregarTarefas()
     inputHTML.value = ""
     inputHTML.focus()
