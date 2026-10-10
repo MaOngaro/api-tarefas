@@ -1,6 +1,7 @@
 const ulLista = document.getElementById("lista")
 
 function mostrarTarefas(tarefas) {
+    ulLista.innerHTML = ""
     for(const t of tarefas) {
         const ulLi = document.createElement("li")
         const ulImput = document.createElement("input")
@@ -10,6 +11,11 @@ function mostrarTarefas(tarefas) {
             ulSpan.textContent = t.titulo
         const ulButton = document.createElement("button")
             ulButton.textContent = "Excluir"
+        
+        ulButton.addEventListener("click", async () => {
+            await fetch(`/tarefas/${t.id}`, { method: "DELETE" })
+            carregarTarefas()
+        })
 
         ulLi.append(ulImput, ulSpan, ulButton)
         ulLista.append(ulLi)
