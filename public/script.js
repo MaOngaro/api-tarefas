@@ -39,6 +39,8 @@ formHTML.addEventListener("submit", async (evento) => {
         body: JSON.stringify({ titulo: inputHTML.value })
     })
     carregarTarefas()
+    inputHTML.value = ""
+    inputHTML.focus()
 })
 
 
