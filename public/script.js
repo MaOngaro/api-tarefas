@@ -7,6 +7,15 @@ function mostrarTarefas(tarefas) {
         const ulInput = document.createElement("input")
             ulInput.type = "checkbox"
             ulInput.checked = t.concluida
+
+        ulInput.addEventListener("change", async () => {
+            await fetch(`/tarefas/${t.id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ titulo: t.titulo, concluida: ulInput.checked })
+            })
+        })
+        
         const ulSpan = document.createElement("span")
             ulSpan.textContent = t.titulo
         const ulButton = document.createElement("button")
