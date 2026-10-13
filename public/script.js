@@ -14,6 +14,7 @@ function mostrarTarefas(tarefas) {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ titulo: t.titulo, concluida: ulInput.checked })
             })
+            carregarTarefas()
         })
         
         const ulSpan = document.createElement("span")
