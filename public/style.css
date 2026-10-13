@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: var(--rosa-medio);
+    background-image: linear-gradient(var(--rosa-claro), var(--rosa-medio), var(--roxo));
     color: var(--preto);
 }
 
@@ -53,4 +53,12 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
     background-color: var(--verde);
+}
+
+h1 {
+    font-family: "Luckiest Guy", cursive;
+    font-weight: 400;
+    color: var(--roxo);
+    text-align: center;
+    font-size: 45px;
 }
