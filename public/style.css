@@ -13,6 +13,8 @@ body {
     background-attachment: fixed;
     background-image: linear-gradient(var(--rosa-claro), var(--rosa-medio), var(--roxo));
     color: var(--preto);
+
+    font-family: "Fira Sans", sans-serif;
 }
 
 .papel {
@@ -22,6 +24,19 @@ body {
     background-color: var(--cinza-claro);
     border: 3px solid var(--roxo);
     border-radius: 8px;
+
+    position: relative;
+}
+
+.abinha {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    margin-left: -16px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--rosa-medio);
+    border-radius: 5px;
 }
 
 ul {
@@ -44,7 +59,7 @@ form button {
     border-radius: 5px;
     border-color: var(--roxo);
     
-    font-family: "Fira Sans", sans-serif;
+    font-family: inherit;
     font-size: 15px;
 }
 
@@ -67,7 +82,7 @@ span {
     border-bottom: 2px solid var(--roxo);
     flex: 1;
 
-    font-family: "Fira Sans", sans-serif;
+    font-family: inherit;
     font-weight: 400;
     color: var(--preto);
     font-size: 20px;
@@ -89,7 +104,7 @@ input[type="checkbox"]:checked {
     width: 300px;
     height: 30px;
 
-    font-family: "Fira Sans", sans-serif;
+    font-family: inherit;
     font-size: 17px;
 }
 
@@ -102,7 +117,7 @@ h1 {
 }
 
 p {
-    font-family: "Fira Sans", sans-serif;
+    font-family: inherit;
     font-weight: 400;
     color: var(--vermelho);
     font-size: 15px;
