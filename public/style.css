@@ -1,5 +1,5 @@
 :root {
-    --verde: #DDE3A3;
+    --verde: #a5e67b;
     --cinza-claro: #EDF0E7;
     --rosa-claro: #F8C7BE;
     --rosa-medio: #D87E9A;
@@ -8,16 +8,17 @@
 }
 
 body {
+    background-attachment: fixed;
     background-image: linear-gradient(var(--rosa-claro), var(--rosa-medio), var(--roxo));
     color: var(--preto);
 }
 
 .papel {
-    max-width: 500px;
+    max-width: 550px;
     margin: 80px auto;
-    padding: 40px 15px 20px 15px;
+    padding: 40px 35px 20px 35px;
     background-color: var(--cinza-claro);
-    border: 2px solid var(--roxo);
+    border: 3px solid var(--roxo);
     border-radius: 8px;
 }
 
@@ -34,13 +35,34 @@ li {
     list-style: none;
 }
 
-button {
+form button {
+    width: 80px;
+    height: 35px;
+}
+
+.excluir {
     margin-left: auto;
+    width: auto;
+    height: auto;
+    background: none;
+    border: none;
+    color: var(--preto);
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.excluir:hover {
+    color: var(--rosa-medio);
 }
 
 span {
     border-bottom: 2px solid var(--roxo);
     flex: 1;
+
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 400;
+    color: var(--preto);
+    font-size: 20px;
 }
 
 input[type="checkbox"] {
@@ -55,10 +77,22 @@ input[type="checkbox"]:checked {
     background-color: var(--verde);
 }
 
+#campo {
+    width: 300px;
+    height: 30px;
+}
+
 h1 {
     font-family: "Luckiest Guy", cursive;
     font-weight: 400;
     color: var(--roxo);
     text-align: center;
     font-size: 45px;
+}
+
+p {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 400;
+    color: red;
+    font-size: 15px;
 }

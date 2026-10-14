@@ -20,7 +20,9 @@ function mostrarTarefas(tarefas) {
         const ulSpan = document.createElement("span")
             ulSpan.textContent = t.titulo
         const ulButton = document.createElement("button")
-            ulButton.textContent = "Excluir"
+            ulButton.textContent = "×"
+            ulButton.setAttribute("aria-label", `Excluir tarefa ${t.titulo}`)
+            ulButton.classList.add("excluir")
         
         ulButton.addEventListener("click", async () => {
             await fetch(`/tarefas/${t.id}`, { method: "DELETE" })
