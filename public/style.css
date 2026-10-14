@@ -1,9 +1,11 @@
 :root {
     --verde: #a5e67b;
+    --verde-claro: #DDE3A3;
     --cinza-claro: #EDF0E7;
     --rosa-claro: #F8C7BE;
     --rosa-medio: #D87E9A;
     --roxo: #744982;
+    --vermelho: #d80000;
     --preto: #000;
 }
 
@@ -38,6 +40,12 @@ li {
 form button {
     width: 80px;
     height: 35px;
+    background-color: var(--verde-claro);
+    border-radius: 5px;
+    border-color: var(--roxo);
+    
+    font-family: "Fira Sans", sans-serif;
+    font-size: 15px;
 }
 
 .excluir {
@@ -52,7 +60,7 @@ form button {
 }
 
 .excluir:hover {
-    color: var(--rosa-medio);
+    color: var(--vermelho);
 }
 
 span {
@@ -80,6 +88,9 @@ input[type="checkbox"]:checked {
 #campo {
     width: 300px;
     height: 30px;
+
+    font-family: "Fira Sans", sans-serif;
+    font-size: 17px;
 }
 
 h1 {
@@ -93,6 +104,6 @@ h1 {
 p {
     font-family: "Fira Sans", sans-serif;
     font-weight: 400;
-    color: red;
+    color: var(--vermelho);
     font-size: 15px;
 }
