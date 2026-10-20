@@ -29,14 +29,23 @@ body {
 }
 
 .abinha {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     position: absolute;
     top: -15px;
     left: 50%;
-    margin-left: -16px;
+    margin-left: -25px;
     width: 50px;
     height: 50px;
-    background-color: var(--rosa-medio);
+    background-color: var(--roxo);
     border-radius: 5px;
+}
+
+.abinha svg {
+    width: 30px;
+    fill: var(--verde-claro);
 }
 
 ul {
