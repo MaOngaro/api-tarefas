@@ -146,6 +146,8 @@ p {
     #campo {
         flex: 1;
         min-width: 0;
+
+        font-size: 15px;
     }
 
     h1 {
