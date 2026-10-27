@@ -1,5 +1,5 @@
-const Database = require('better-sqlite3')
-const db = new Database('tarefas.db')
+const {DatabaseSync} = require('node:sqlite')
+const db = new DatabaseSync('tarefas.db')
 
 db.exec(`
     CREATE TABLE IF NOT EXISTS tarefas (
