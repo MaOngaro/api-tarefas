@@ -1,12 +1,16 @@
 const express = require('express')
 const router = express.Router()
 
+const db = require('../db.js')
+
 const tarefas = [
     { id: 1, titulo: "Carinho no gato", concluida: true },
     { id: 2, titulo: "Limpar caixinha de areia", concluida: false }
 ]
 
 router.get('/', (req, res) => {
+    const consulta = db.prepare("SELECT * FROM tarefas")
+    const tarefas = consulta.all()
     res.json(tarefas)
 })
 
@@ -17,10 +21,10 @@ router.post('/', (req, res) => {
         res.status(400).json({ erro: "Adicione o título." })
         return
     }
-    const novaTarefa = { id: proximoId, titulo: req.body.titulo.trim(), concluida: false }
-    proximoId++
-    tarefas.push(novaTarefa)
-    res.status(201).json(novaTarefa)
+    const titulo = req.body.titulo.trim()
+    const ficha = db.prepare("INSERT INTO tarefas (titulo) VALUES (?)")
+    const resultado = ficha.run(titulo)
+    res.status(201).json( { id: resultado.lastInsertRowid, titulo: titulo, concluida: false } )
 })
 
 router.delete('/:id', (req, res) => {
