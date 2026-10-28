@@ -10,7 +10,12 @@ const tarefas = [
 
 router.get('/', (req, res) => {
     const consulta = db.prepare("SELECT * FROM tarefas")
-    const tarefas = consulta.all()
+    const linhas = consulta.all()
+
+    const tarefas = linhas.map(linha => {
+        return { ...linha, concluida: (linha.concluida === 1) }
+    })
+
     res.json(tarefas)
 })
 
