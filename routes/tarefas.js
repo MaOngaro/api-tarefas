@@ -45,12 +45,13 @@ router.delete('/:id', (req, res) => {
 
 router.get('/:id', (req, res) => {
     const id = Number(req.params.id)
-    const tarefa = tarefas.find(x => x.id === id)
-    if (tarefa === undefined) {
+    const consulta = db.prepare("SELECT * FROM tarefas WHERE id = ?")
+    const linha = consulta.get(id)
+    if (linha === undefined) {
         res.status(404).json({ erro: "Tarefa não encontrada." })
         return
     }
-    res.json(tarefa)
+    res.json({ ...linha, concluida: linha.concluida === 1 })
 })
 
 router.put('/:id', (req, res) => {
