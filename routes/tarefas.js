@@ -56,18 +56,21 @@ router.get('/:id', (req, res) => {
 
 router.put('/:id', (req, res) => {
     const id = Number(req.params.id)
-    const tarefa = tarefas.find(x => x.id === id)
-    if (tarefa === undefined) {
-        res.status(404).json({ erro: "Tarefa não encontrada." })
-        return
-    }
+
     if (!req.body.titulo || req.body.titulo.trim() === ""){
         res.status(400).json({ erro: "Adicione o título." })
         return
     }
-    tarefa.titulo = req.body.titulo.trim()
-    tarefa.concluida = req.body.concluida
-    res.json(tarefa)
+
+    const titulo = req.body.titulo.trim()
+    const concluida = req.body.concluida ? 1 : 0
+    const ficha = db.prepare("UPDATE tarefas SET titulo = ?, concluida = ? WHERE id = ?")
+    const resultado = ficha.run(titulo, concluida, id)
+    if (resultado.changes === 0) {
+        res.status(404).json({ erro: "Tarefa não encontrada." })
+        return
+    }
+    res.json({ id: id, titulo: titulo, concluida: req.body.concluida })
 })
 
 module.exports = router
