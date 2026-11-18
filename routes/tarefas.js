@@ -34,12 +34,13 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     const id = Number(req.params.id)
-    const index = tarefas.findIndex(x => x.id === id)
-    if (index === -1) {
+    const ficha = db.prepare("DELETE FROM tarefas WHERE id = ?")
+    const resultado = ficha.run(id)
+    if (resultado.changes === 0) {
         res.status(404).json({ erro: "ID não localizado." })
         return
     }
-    tarefas.splice(index, 1)
+
     res.sendStatus(204)
 })
 
