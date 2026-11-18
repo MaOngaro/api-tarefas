@@ -3,11 +3,6 @@ const router = express.Router()
 
 const db = require('../db.js')
 
-const tarefas = [
-    { id: 1, titulo: "Carinho no gato", concluida: true },
-    { id: 2, titulo: "Limpar caixinha de areia", concluida: false }
-]
-
 router.get('/', (req, res) => {
     const consulta = db.prepare("SELECT * FROM tarefas")
     const linhas = consulta.all()
@@ -18,8 +13,6 @@ router.get('/', (req, res) => {
 
     res.json(tarefas)
 })
-
-let proximoId = 3
 
 router.post('/', (req, res) => {
     if (!req.body.titulo || req.body.titulo.trim() === ""){
