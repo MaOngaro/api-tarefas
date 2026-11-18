@@ -17,10 +17,12 @@ API REST de tarefas feita com Node.js e Express, acompanhada de uma interface we
 - **Node.js** e **Express** no servidor
 - **HTML, CSS e JavaScript** sem framework no front-end, usando `fetch` para falar com a API
 - **Google Fonts** (Luckiest Guy e Fira Sans)
+- **SQLite** para guardar as tarefas, pelo módulo `node:sqlite` que já vem embutido no Node
+
 
 ## Como rodar
 
-É preciso ter o [Node.js](https://nodejs.org) instalado.
+É preciso ter o [Node.js](https://nodejs.org) na versão 24 ou mais nova, porque o projeto usa o módulo `node:sqlite`, embutido no Node.
 
 ```bash
 git clone https://github.com/MaOngaro/api-tarefas.git
@@ -28,6 +30,8 @@ cd api-tarefas
 npm install
 node index.js
 ```
+
+Na primeira execução, o arquivo do banco (`tarefas.db`) é criado sozinho. Ele não vai para o repositório, então cada computador começa com o seu banco vazio.
 
 Depois, abra [http://localhost:3000](http://localhost:3000) no navegador.
 
@@ -64,20 +68,20 @@ api-tarefas/
 │   └── style.css
 ├── routes/
 │   └── tarefas.js
+├── db.js
 └── index.js
 ```
 
-O Express serve a pasta `public` como vitrine do site, e as rotas da API ficam separadas em `routes/tarefas.js`, ligadas ao servidor com `Router`.
+O Express serve a pasta `public` como vitrine do site, e as rotas da API ficam separadas em `routes/tarefas.js`, ligadas ao servidor com `Router`. O `db.js` abre o banco SQLite e cria a tabela de tarefas se ela ainda não existir.
 
 ## Decisões e limitações
 
-- **Dados em memória.** As tarefas ficam numa lista dentro do servidor. Ao reiniciar, a lista volta ao começo.
-- **Ids que não se repetem.** Um contador separado gera cada id, então apagar uma tarefa nunca faz outra herdar o número dela.
+- **Dados em SQLite.** As tarefas ficam num arquivo de banco e continuam lá depois de reiniciar o servidor. O `concluida` é guardado como 0 ou 1 e convertido para `false` ou `true` na hora de responder.
+- **Ids que não se repetem.** O próprio banco gera cada id, então apagar uma tarefa nunca faz outra herdar o número dela.
 - **Front-end sem framework.** A escolha foi proposital, para praticar manipulação do DOM e eventos na base da linguagem.
 
 ## Próximos passos
 
-- Trocar a lista em memória por um banco SQLite
 - Cobrir as rotas com testes automatizados (Jest e Supertest)
 
 ## Créditos
